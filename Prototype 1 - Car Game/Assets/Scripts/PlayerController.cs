@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 30f;
-    public float turnSpeed = 30f;
+    public float turnSpeed = 20f;
     public float horizontalInput;
     public float verticalInput;
     
@@ -22,6 +22,6 @@ public class PlayerController : MonoBehaviour
         
         // Move the vehicle!
         transform.Translate(Vector3.forward * (Time.deltaTime * speed * verticalInput));
-        transform.Translate(Vector3.right * (Time.deltaTime * turnSpeed * horizontalInput));
+        transform.Rotate(Vector3.up * (Time.deltaTime * turnSpeed * horizontalInput));
     }
 }
