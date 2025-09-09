@@ -6008,6 +6008,7 @@ GameObject:
   - component: {fileID: 6492547784069052844}
   - component: {fileID: 7341668143378464159}
   - component: {fileID: 6593536050706875103}
+  - component: {fileID: 1581474981953871838}
   m_Layer: 0
   m_Name: Pug
   m_TagString: Untagged
@@ -6101,7 +6102,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2124b885f0e33dd4d9c9d0e270dbb09f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
+  speed: 20
+--- !u!114 &1581474981953871838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9008190891911158229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb5af742e3c369945aaa84d82643e8b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9061523798319359096
 GameObject:
   m_ObjectHideFlags: 0

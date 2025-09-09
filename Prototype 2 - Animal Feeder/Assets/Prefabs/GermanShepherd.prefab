@@ -1294,6 +1294,7 @@ GameObject:
   - component: {fileID: 1359090243695866200}
   - component: {fileID: 330625730105707681}
   - component: {fileID: 9045514096481176573}
+  - component: {fileID: 8742227959954588083}
   m_Layer: 0
   m_Name: GermanShepherd
   m_TagString: Untagged
@@ -1387,7 +1388,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2124b885f0e33dd4d9c9d0e270dbb09f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
+  speed: 30
+--- !u!114 &8742227959954588083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658824210212143720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb5af742e3c369945aaa84d82643e8b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1768552470451971471
 GameObject:
   m_ObjectHideFlags: 0
