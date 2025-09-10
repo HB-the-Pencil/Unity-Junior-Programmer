@@ -13,7 +13,9 @@ public class SpawnManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        InvokeRepeating("SpawnRandomAnimal", _startDelay, _spawnInterval);
+        // Spawn the animal on a repeating timer.
+        InvokeRepeating(
+            "SpawnRandomAnimal", _startDelay, _spawnInterval);
     }
 
     // Update is called once per frame
@@ -24,6 +26,7 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnRandomAnimal()
     {
+        // Pick a random animal to spawn and spawn it at a random location.
         int animalIndex = Random.Range(0, animalPrefabs.Length);
         Vector3 animalPosition = new Vector3(
             Random.Range(-_spawnRangeX, _spawnRangeX), 0, _spawnRangeZ);

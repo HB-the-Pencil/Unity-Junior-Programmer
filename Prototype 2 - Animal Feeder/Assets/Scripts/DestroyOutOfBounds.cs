@@ -14,12 +14,15 @@ public class DestroyOutOfBounds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // If the steak is above the screen, destroy it.
         if (transform.position.z > _topBound)
         {
             Destroy(gameObject);
         }
+        // If the dog is below the screen, destroy it and announce the end of the game.
         else if (transform.position.z < _bottomBound)
         {
+            Debug.Log("Game Over");
             Destroy(gameObject);
         }
     }

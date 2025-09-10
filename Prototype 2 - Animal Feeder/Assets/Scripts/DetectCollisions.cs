@@ -16,6 +16,7 @@ public class DetectCollisions : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        // Destroy the dog and the steak.
         Destroy(gameObject);
         Destroy(other.gameObject);
     }
