@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class DetectCollisionsBonus : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    // New concept: SerializeField to make an editable private variable
+    [SerializeField] HealthBarBonus healthBar;
+    [SerializeField] private float health = 0;
+    [SerializeField] private float maxHealth = 3;
+
+    // New concept: Awake for the beginning of the class's existence
+    private void Awake()
     {
-        
+        healthBar = GetComponentInChildren<HealthBarBonus>();
     }
 
-    // Update is called once per frame
+// Update is called once per frame
     void Update()
     {
         
@@ -19,9 +24,16 @@ public class DetectCollisionsBonus : MonoBehaviour
         // Destroy the animal and the steak.
         if (other.gameObject.CompareTag("Steak"))
         {
-            Destroy(gameObject);
+            // Increase saturation.
             Destroy(other.gameObject);
-            PlayerControllerBonus.UpdateScore(10);
+            health++;
+            healthBar.UpdateHealth(health, maxHealth);
+
+            if (health >= maxHealth)
+            {
+                Destroy(gameObject);
+                PlayerControllerBonus.UpdateScore((Mathf.RoundToInt(maxHealth) * 10));
+            }
         }
 
         if (other.gameObject.CompareTag("Player") && gameObject.CompareTag("Bird"))
