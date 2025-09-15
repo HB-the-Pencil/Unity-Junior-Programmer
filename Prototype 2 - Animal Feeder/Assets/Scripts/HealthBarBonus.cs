@@ -3,10 +3,10 @@ using UnityEngine.UI;
 
 public class HealthBarBonus : MonoBehaviour
 {
-    private Slider _slider;
+    [SerializeField] Slider slider;
 
     public void UpdateHealth(float current, float max)
     {
-        _slider.value = current / max;
+        slider.value = current / max;
     }
 }
