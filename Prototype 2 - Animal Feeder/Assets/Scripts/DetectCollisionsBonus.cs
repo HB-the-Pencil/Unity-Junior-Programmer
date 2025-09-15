@@ -21,12 +21,13 @@ public class DetectCollisionsBonus : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(other.gameObject);
+            PlayerControllerBonus.UpdateScore(10);
         }
 
         if (other.gameObject.CompareTag("Player") && gameObject.CompareTag("Bird"))
         {
             Destroy(gameObject);
-            Debug.Log("Game Over");
+            PlayerControllerBonus.UpdateLives(-1);
         }
     }
 }

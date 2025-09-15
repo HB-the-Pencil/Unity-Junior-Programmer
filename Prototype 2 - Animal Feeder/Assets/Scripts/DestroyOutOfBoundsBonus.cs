@@ -24,7 +24,7 @@ public class DestroyOutOfBoundsBonus : MonoBehaviour
         // If the dog is below the screen, destroy it and announce the end of the game.
         else if (transform.position.z < _bottomBound)
         {
-            Debug.Log("Game Over");
+            PlayerControllerBonus.UpdateLives(-1);
             Destroy(gameObject);
         }
         

@@ -10,10 +10,13 @@ public class PlayerControllerBonus : MonoBehaviour
 
     public GameObject projectilePrefab;
     
+    private static int _lives = 3;
+    private static int _score = 0;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        UpdateLives();
     }
 
     // Update is called once per frame
@@ -38,5 +41,19 @@ public class PlayerControllerBonus : MonoBehaviour
         {
             Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
         }
+    }
+    
+    // New concept: static methods to allow access by other classes.
+    public static void UpdateLives(int amount = 0)
+    {
+        _lives += amount;
+        // New concept: ternary if to condense code.
+        Debug.Log(_lives > 0 ? $"Lives remaining: {_lives}" : $"Game Over! Your score: {_score}");
+    }
+    
+    public static void UpdateScore(int amount = 0)
+    {
+        _score += amount;
+        Debug.Log($"Score: {_score}");
     }
 }

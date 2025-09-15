@@ -769,9 +769,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalPrefabs:
-  - {fileID: 4777047387848147789, guid: 4c6edd53aa42e9f4abf42fc29d5d0096, type: 3}
-  - {fileID: 1658824210212143720, guid: 71cf27d3118f2194689fc1d43658fd67, type: 3}
-  - {fileID: 9008190891911158229, guid: f05e40fa77d9c9b49a98538a49184746, type: 3}
+  - {fileID: 4777047387848147789, guid: b7b5705079a102844afe2f456fb26694, type: 3}
+  - {fileID: 1658824210212143720, guid: d32c63a1fece91a41af7381c8c826897, type: 3}
+  - {fileID: 9008190891911158229, guid: 429d85206c96d484a847e8e46b9c311f, type: 3}
   aggressiveAnimalPrefabs:
   - {fileID: 8404981432168974551, guid: f17dd85c900e2a54180322847ea73787, type: 3}
   - {fileID: 8404981432168974551, guid: 5628276fb08d9804e97c496dd9bc0ec7, type: 3}
