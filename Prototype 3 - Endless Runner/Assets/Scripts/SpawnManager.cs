@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public class SpawnManager : MonoBehaviour
 {
     private Vector3 spawnPosition = new Vector3(25, 0, 0);
+    private PlayerController player;
     private float startDelay = 2;
     private float repeatRate = 2;
     
@@ -13,6 +14,8 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         InvokeRepeating("SpawnObstacle", startDelay, repeatRate);
+        
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -23,6 +26,9 @@ public class SpawnManager : MonoBehaviour
     
     private void SpawnObstacle()
     {
-        Instantiate(spawnPrefab, spawnPosition, spawnPrefab.transform.rotation);
+        if (!player.gameOver)
+        {
+            Instantiate(spawnPrefab, spawnPosition, spawnPrefab.transform.rotation);
+        }
     }
 }
