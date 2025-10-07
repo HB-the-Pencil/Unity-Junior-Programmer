@@ -25,17 +25,14 @@ public class PlayerController : MonoBehaviour
     private readonly float _dashSpeed = 30f;
     private readonly float _dashCooldown = 1f;
     private readonly float _dashDuration = 0.3f;
-    private float _dashTime;
-    private bool _dashing;
+    private float _cooldown;
+    private bool _specialActive;
 
     private void Awake()
     {
         // Get the player's controller.
         _body = GetComponent<CharacterController>();
         _controls = new PlayerActions();
-        
-        // Set up the UI bars.
-        staminaBar = GetComponentInChildren<StaminaBar>();
     }
 
     private void OnEnable()
@@ -63,58 +60,13 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(0, _camInput * _camSpeed * Time.deltaTime, 0);
             
             // Move the player.
-            _moveInput = _controls.Movement.Move.ReadValue<Vector2>();
-            
-            // Normalize the movement and point it forward.
-            Vector3 movement = transform.right * _moveInput.x + transform.forward * _moveInput.y;
-            movement = movement.normalized * (_moveSpeed * Time.deltaTime);
-            
-            _body.Move(movement);
+            DoMove();
             
             // Attack abilities. (no enemies yet, so no attacks)
-            if (_controls.Abilities.Attack.triggered)
-            {
-                // do attacky things here
-                Debug.Log("bop");
-            }
+            DoAttack();
             
-            // Dash abilities.
-            if (_dashTime <= 0)
-            {
-                // Hide the stamina bar.
-                staminaBar.transform.gameObject.SetActive(false);
-                
-                if (_controls.Abilities.Special.triggered)
-                {
-                    _dashing = true;
-                    _dashTime = 0f;
-                }
-            }
-
-            if (_dashing)
-            {
-                if (_dashTime < _dashDuration)
-                {
-                    // Dash forward.
-                    _body.Move(transform.forward * (_dashSpeed * Time.deltaTime));
-                    _dashTime += Time.deltaTime;
-                }
-                else
-                {
-                    _dashing = false;
-                    _dashTime = _dashCooldown;
-                    
-                    // Make the stamina bar appear.
-                    staminaBar.transform.gameObject.SetActive(true);
-                }
-            }
-
-            if (!_dashing)
-            {
-                // Decrease the cooldown.
-                _dashTime -= Time.deltaTime;
-                staminaBar.UpdateStamina(_dashTime, _dashCooldown);
-            }
+            // Dash abilities. Currently, only dash is available, but this may change.
+            DoSpecial("dash");
         }
 
         if (_controls.UI.Pause.triggered)
@@ -137,5 +89,69 @@ public class PlayerController : MonoBehaviour
         playing = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    private void DoMove()
+    {
+        _moveInput = _controls.Movement.Move.ReadValue<Vector2>();
+            
+        // Normalize the movement and point it forward.
+        Vector3 movement = transform.right * _moveInput.x + transform.forward * _moveInput.y;
+        movement = movement.normalized * (_moveSpeed * Time.deltaTime);
+            
+        _body.Move(movement);
+    }
+    
+    private void DoAttack()
+    {
+        if (_controls.Abilities.Attack.triggered)
+        {
+            // do attacky things here
+            Debug.Log("bop");
+        }
+    }
+
+    private void DoSpecial(string special)
+    {
+        if (_cooldown <= 0)
+        {
+            // Hide the stamina bar.
+            staminaBar.transform.gameObject.SetActive(false);
+                
+            if (_controls.Abilities.Special.triggered)
+            {
+                _specialActive = true;
+                _cooldown = 0f;
+            }
+        }
+
+        if (_specialActive)
+        {
+            // Use the dash special.
+            if (special == "dash")
+            {
+                if (_cooldown < _dashDuration)
+                {
+                    // Dash forward.
+                    _body.Move(transform.forward * (_dashSpeed * Time.deltaTime));
+                    _cooldown += Time.deltaTime;
+                }
+                else
+                {
+                    _specialActive = false;
+                    _cooldown = _dashCooldown;
+
+                    // Make the stamina bar appear.
+                    staminaBar.transform.gameObject.SetActive(true);
+                }
+            }
+        }
+
+        if (!_specialActive)
+        {
+            // Decrease the cooldown.
+            _cooldown -= Time.deltaTime;
+            staminaBar.UpdateStamina(_cooldown, _dashCooldown);
+        }
     }
 }
