@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 8296606635538302910}
   - component: {fileID: 8372776268470387535}
   - component: {fileID: 2993286233846787648}
+  - component: {fileID: -8830156163880424572}
   m_Layer: 5
   m_Name: StaminaBarManager
   m_TagString: Untagged
@@ -205,6 +206,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &-8830156163880424572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4510267003320178195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6c71f2fd0ed70f4289bbb4ebf424506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CanvasOrientation
 --- !u!1 &5450633293469064903
 GameObject:
   m_ObjectHideFlags: 0
