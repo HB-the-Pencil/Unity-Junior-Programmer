@@ -50,20 +50,17 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (playing)
-        {
-            // Turn the camera.
-            _camInput = controls.Camera.TurnCam.ReadValue<float>();
-            transform.Rotate(0, _camInput * _camSpeed * Time.deltaTime, 0);
-            
-            // Move the player.
-            DoMove();
-            
-            // Attack abilities. (no enemies yet, so no attacks)
-            DoAttack();
-            
-            specialHandler.DoSpecial();
-        }
+        // Turn the camera.
+        _camInput = controls.Camera.TurnCam.ReadValue<float>();
+        transform.Rotate(0, _camInput * _camSpeed * Time.deltaTime, 0);
+        
+        // Move the player.
+        DoMove();
+        
+        // Attack abilities. (no enemies yet, so no attacks)
+        DoAttack();
+        
+        specialHandler.DoSpecial();
 
         if (controls.UI.Pause.triggered)
         {
@@ -74,7 +71,7 @@ public class PlayerController : MonoBehaviour
     private void Pause()
     {
         // Unlock the cursor.
-        playing = false;
+        Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -82,7 +79,7 @@ public class PlayerController : MonoBehaviour
     public void Unpause()
     {
         // Lock the cursor.
-        playing = true;
+        Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
