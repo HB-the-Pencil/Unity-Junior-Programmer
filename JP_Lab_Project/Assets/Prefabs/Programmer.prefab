@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 233090120744284334}
   - component: {fileID: 966735938209025782}
   - component: {fileID: 6882554213006667017}
+  - component: {fileID: 7391526201117617474}
   m_Layer: 0
   m_Name: Programmer
   m_TagString: Programmer
@@ -156,9 +157,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FollowPlayer
   following: 1
-  speed: 10
-  followDistance: 2
-  targetTag: Player
+  close: 0
+  target: {fileID: 0}
+  speed: 9
+  targetDistance: 3
+  awakeDistance: 5
+  targetTags:
+  - Player
+--- !u!114 &7391526201117617474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596728465603828251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc4a23b6ae465044f8725d4259f072ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthBar
 --- !u!1001 &1616516955856362776
 PrefabInstance:
   m_ObjectHideFlags: 0

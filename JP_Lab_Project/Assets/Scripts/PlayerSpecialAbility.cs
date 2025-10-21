@@ -36,15 +36,22 @@ public class PlayerSpecialAbility : MonoBehaviour
     // Update is called once per frame
     public void DoSpecial()
     {
-        if (_cooldown <= 0)
+        if (!_specialActive)
         {
-            // Hide the stamina bar.
-            staminaBar.transform.gameObject.SetActive(false);
-                
-            if (_player.controls.Abilities.Special.triggered)
+            // Decrease the cooldown.
+            _cooldown -= Time.deltaTime;
+            staminaBar.UpdateStamina(_cooldown, _dashCooldown);
+
+            if (_cooldown <= 0)
             {
-                _specialActive = true;
-                _cooldown = 0f;
+                // Hide the stamina bar.
+                staminaBar.transform.gameObject.SetActive(false);
+
+                if (_player.Controls.Abilities.Special.triggered)
+                {
+                    _specialActive = true;
+                    _cooldown = 0f;
+                }
             }
         }
 
@@ -68,13 +75,6 @@ public class PlayerSpecialAbility : MonoBehaviour
                     staminaBar.transform.gameObject.SetActive(true);
                 }
             }
-        }
-
-        if (!_specialActive)
-        {
-            // Decrease the cooldown.
-            _cooldown -= Time.deltaTime;
-            staminaBar.UpdateStamina(_cooldown, _dashCooldown);
         }
     }
 }

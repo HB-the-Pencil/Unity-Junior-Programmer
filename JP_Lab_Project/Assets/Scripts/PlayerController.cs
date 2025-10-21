@@ -3,11 +3,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public bool playing;
+    public HealthBar healthBar;
     
     [SerializeField] GameObject cam;
-    [SerializeField] HealthBar healthBar;
     
-    public PlayerActions controls;
+    public PlayerActions Controls;
     private CharacterController _body;
     private PlayerSpecialAbility specialHandler;
     // private PlayerAttack attackHandler; // not yet implemented
@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
 
     private readonly float _camSpeed = 30f;
     private readonly float _moveSpeed = 10f;
-    private readonly float _attackSpeed = 1f;
 
     private void Awake()
     {
@@ -29,17 +28,17 @@ public class PlayerController : MonoBehaviour
         // attackHandler = GetComponent<PlayerAttack>(); // not yet implemented
         
         // Get the controls.
-        controls = new PlayerActions();
+        Controls = new PlayerActions();
     }
 
     private void OnEnable()
     {
-        controls.Enable();
+        Controls.Enable();
     }
     
     private void OnDisable()
     {
-        controls.Disable();
+        Controls.Disable();
     }
 
     private void Start()
@@ -51,7 +50,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // Turn the camera.
-        _camInput = controls.Camera.TurnCam.ReadValue<float>();
+        _camInput = Controls.Camera.TurnCam.ReadValue<float>();
         transform.Rotate(0, _camInput * _camSpeed * Time.deltaTime, 0);
         
         // Move the player.
@@ -62,7 +61,7 @@ public class PlayerController : MonoBehaviour
         
         specialHandler.DoSpecial();
 
-        if (controls.UI.Pause.triggered)
+        if (Controls.UI.Pause.triggered)
         {
             Pause();
         }
@@ -86,7 +85,7 @@ public class PlayerController : MonoBehaviour
 
     private void DoMove()
     {
-        _moveInput = controls.Movement.Move.ReadValue<Vector2>();
+        _moveInput = Controls.Movement.Move.ReadValue<Vector2>();
             
         // Normalize the movement and point it forward.
         Vector3 movement = transform.right * _moveInput.x + transform.forward * _moveInput.y;
@@ -97,7 +96,7 @@ public class PlayerController : MonoBehaviour
     
     private void DoAttack()
     {
-        if (controls.Abilities.Attack.triggered)
+        if (Controls.Abilities.Attack.triggered)
         {
             // do attacky things here
             Debug.Log("bop");

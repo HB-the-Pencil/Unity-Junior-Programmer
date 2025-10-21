@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 348132260767238273}
   - component: {fileID: 2176858492475037381}
   - component: {fileID: 5778505073484784568}
+  - component: {fileID: 8044307301794019236}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -133,8 +134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playing: 0
+  healthBar: {fileID: 0}
   cam: {fileID: 3302711487733632920}
-  healthBar: {fileID: 6371906386395503015}
 --- !u!114 &2176858492475037381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +175,18 @@ CharacterController:
   m_SkinWidth: 0.01
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8044307301794019236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357398188303365429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc4a23b6ae465044f8725d4259f072ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthBar
 --- !u!1 &3302711487733632920
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,9 +788,13 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4862917709678677869, guid: 7a9624731ed25dc47a272e284ad0d329, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6088817889257073702, guid: 7a9624731ed25dc47a272e284ad0d329, type: 3}
       propertyPath: m_Name
-      value: PlayerHealthBarManager
+      value: HealthBarManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -789,14 +806,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3296550134715799585, guid: 7a9624731ed25dc47a272e284ad0d329, type: 3}
   m_PrefabInstance: {fileID: 3725171370959151465}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6371906386395503015 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7773204956296526030, guid: 7a9624731ed25dc47a272e284ad0d329, type: 3}
-  m_PrefabInstance: {fileID: 3725171370959151465}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc4a23b6ae465044f8725d4259f072ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthBar
