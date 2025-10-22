@@ -40,7 +40,7 @@ public class EnemyAttack : MonoBehaviour
         bool close = followScript.close;
         GameObject target = followScript.target;
 
-        if (close)
+        if (close && cooldown <= 0)
         {
             DoAttack(target);
         }
@@ -58,21 +58,18 @@ public class EnemyAttack : MonoBehaviour
     
     void DoAttack(GameObject target)
     {
-        if (cooldown <= 0)
+        animator.SetBool("Attacking", true);
+        animator.Play("Enemy_AttackHitboxGrow");
+        hitboxRenderer.enabled = true;
+        displayTimer = displayForSecs;
+        
+        cooldown = reloadTime;
+
+        if (target.CompareTag("Player") || target.CompareTag("Crystal"))
         {
-            animator.SetBool("Attacking", true);
-            animator.Play("Enemy_AttackHitboxGrow");
-            hitboxRenderer.enabled = true;
-            displayTimer = displayForSecs;
-            
-            cooldown = reloadTime;
+            HealthBar healthBar = target.GetComponent<HealthBar>();
 
-            if (target.CompareTag("Player") || target.CompareTag("Programmer"))
-            {
-                HealthBar healthBar = target.GetComponent<HealthBar>();
-
-                healthBar.TakeDamage(damage / 100);
-            }
+            healthBar.TakeDamage(damage / healthBar.maxHealth);
         }
     }
 }

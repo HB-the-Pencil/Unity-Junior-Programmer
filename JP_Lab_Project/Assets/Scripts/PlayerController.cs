@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public bool playing;
-    public HealthBar healthBar;
     
     [SerializeField] GameObject cam;
     
@@ -21,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         // Get the player's controller.
-        _body = GetComponent<CharacterController>();
+        _body = GetComponentInChildren<CharacterController>();
         
         // Find the Special and Attack controller scripts so they can talk back and forth.
         specialHandler = GetComponent<PlayerSpecialAbility>();

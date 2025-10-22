@@ -275,7 +275,7 @@ MonoBehaviour:
   targetDistance: 2
   awakeDistance: -1
   targetTags:
-  - Programmer
+  - Crystal
   - Player
 --- !u!114 &1095129205014075597
 MonoBehaviour:

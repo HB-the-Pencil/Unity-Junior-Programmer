@@ -3,10 +3,15 @@ using UnityEngine.UI;
 
 public class StaminaBar : MonoBehaviour
 {
-    [SerializeField] Slider slider;
+    private Slider stamina;
+
+    private void Start()
+    {
+        stamina = GetComponentInChildren<Slider>();
+    }
 
     public void UpdateStamina(float current, float max)
     {
-        slider.value = current / max;
+        stamina.value = current / max;
     }
 }

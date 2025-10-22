@@ -3,22 +3,23 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+    // This is only used for ratios.
+    public float maxHealth = 100f;
+    
     private Slider health;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         health = GetComponentInChildren<Slider>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateHealth(float amount)
     {
-        
+        health.value = amount / maxHealth;
     }
 
     public void TakeDamage(float damage)
     {
-        health.value -= damage;
+        health.value -= damage / maxHealth;
     }
 }

@@ -27,7 +27,7 @@ public class PlayerSpecialAbility : MonoBehaviour
 
     void Start()
     {
-        _body = GetComponent<CharacterController>();
+        _body = GetComponentInChildren<CharacterController>();
         
         // Find the main controller script so they can talk back and forth.
         _player = GetComponent<PlayerController>();
@@ -40,7 +40,16 @@ public class PlayerSpecialAbility : MonoBehaviour
         {
             // Decrease the cooldown.
             _cooldown -= Time.deltaTime;
-            staminaBar.UpdateStamina(_cooldown, _dashCooldown);
+            
+            switch (ability)
+            {
+                case Abilities.Dash:
+                    staminaBar.UpdateStamina(_cooldown, _dashCooldown);
+                    break;
+                
+                default:
+                    break;
+            }
 
             if (_cooldown <= 0)
             {
@@ -57,23 +66,28 @@ public class PlayerSpecialAbility : MonoBehaviour
 
         if (_specialActive)
         {
-            // Use the dash special.
-            if (ability == Abilities.Dash)
+            switch (ability)
             {
-                if (_cooldown < _dashDuration)
-                {
-                    // Dash forward.
-                    _body.Move(transform.forward * (_dashSpeed * Time.deltaTime));
-                    _cooldown += Time.deltaTime;
-                }
-                else
-                {
-                    _specialActive = false;
-                    _cooldown = _dashCooldown;
+                // Use the dash special.
+                case Abilities.Dash:
+                    if (_cooldown < _dashDuration)
+                    {
+                        // Dash forward.
+                        _body.Move(transform.forward * (_dashSpeed * Time.deltaTime));
+                        _cooldown += Time.deltaTime;
+                    }
+                    else
+                    {
+                        _specialActive = false;
+                        _cooldown = _dashCooldown;
 
-                    // Make the stamina bar appear.
-                    staminaBar.transform.gameObject.SetActive(true);
-                }
+                        // Make the stamina bar appear.
+                        staminaBar.transform.gameObject.SetActive(true);
+                    }
+                    break;
+                
+                default:
+                    break;
             }
         }
     }
