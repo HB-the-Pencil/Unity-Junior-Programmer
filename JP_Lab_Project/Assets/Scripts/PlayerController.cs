@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject cam;
     
     public PlayerActions Controls;
-    private CharacterController _body;
+    public CharacterController body;
     private PlayerSpecialAbility specialHandler;
     // private PlayerAttack attackHandler; // not yet implemented
 
@@ -20,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         // Get the player's controller.
-        _body = GetComponentInChildren<CharacterController>();
+        body = GetComponent<CharacterController>();
         
         // Find the Special and Attack controller scripts so they can talk back and forth.
         specialHandler = GetComponent<PlayerSpecialAbility>();
@@ -90,7 +91,7 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = transform.right * _moveInput.x + transform.forward * _moveInput.y;
         movement = movement.normalized * (_moveSpeed * Time.deltaTime);
             
-        _body.Move(movement);
+        body.Move(movement);
     }
     
     private void DoAttack()

@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerSpecialAbility : MonoBehaviour
 {
+    public CharacterController body;
+    
     enum Abilities
     {
         Dash,
@@ -23,14 +26,12 @@ public class PlayerSpecialAbility : MonoBehaviour
     private bool _specialActive;
     
     private PlayerController _player;
-    private CharacterController _body;
 
     void Start()
     {
-        _body = GetComponentInChildren<CharacterController>();
-        
         // Find the main controller script so they can talk back and forth.
         _player = GetComponent<PlayerController>();
+        body = _player.body;
     }
 
     // Update is called once per frame
@@ -73,7 +74,7 @@ public class PlayerSpecialAbility : MonoBehaviour
                     if (_cooldown < _dashDuration)
                     {
                         // Dash forward.
-                        _body.Move(transform.forward * (_dashSpeed * Time.deltaTime));
+                        body.Move(transform.forward * (_dashSpeed * Time.deltaTime));
                         _cooldown += Time.deltaTime;
                     }
                     else
