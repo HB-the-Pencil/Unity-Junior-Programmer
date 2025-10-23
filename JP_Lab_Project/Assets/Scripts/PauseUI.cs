@@ -16,14 +16,7 @@ public class PauseUI : MonoBehaviour
     {
         // Because the menu only shows when the game is paused, we can condense
         // 8 lines of if statements into 1 line.
-        if (Time.timeScale == 0)
-        {
-            pauseMenu.transform.gameObject.SetActive(true);
-        }
-        else
-        {
-            pauseMenu.transform.gameObject.SetActive(false);
-        }
+        pauseMenu.transform.gameObject.SetActive(Time.timeScale == 0);
     }
 
     void OnUnpause()

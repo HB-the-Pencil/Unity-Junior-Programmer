@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
@@ -15,52 +14,52 @@ public class EnemyAttack : MonoBehaviour
     [Tooltip("How long to display hitbox")]
     [SerializeField] private float displayForSecs;
     
-    private float cooldown;
-    private float displayTimer;
+    private float _cooldown;
+    private float _displayTimer;
 
-    private FollowTarget followScript;
+    private FollowTarget _followScript;
     
-    private Animator animator;
+    private Animator _animator;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        followScript = GetComponent<FollowTarget>();
+        _followScript = GetComponent<FollowTarget>();
         
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     private void Update()
     {
         // Get the nearest target and whether it is close enough to hit.
-        bool close = followScript.close;
-        GameObject target = followScript.target;
+        bool close = _followScript.close;
+        GameObject target = _followScript.target;
 
-        if (close && cooldown <= 0)
+        if (close && _cooldown <= 0)
         {
             DoAttack(target);
         }
         
         // Display the attack if the target is being attacked.
-        if (displayTimer <= 0)
+        if (_displayTimer <= 0)
         {
-            animator.SetBool("Attacking", false);
+            _animator.SetBool("Attacking", false);
         }
         
-        cooldown -= Time.deltaTime;
-        displayTimer -= Time.deltaTime;
+        _cooldown -= Time.deltaTime;
+        _displayTimer -= Time.deltaTime;
     }
     
     private void DoAttack(GameObject target)
     {
         if (target.CompareTag("Player") || target.CompareTag("Crystal"))
         {
-            animator.SetBool("Attacking", true);
-            animator.Play("Enemy_AttackHitboxGrow");
-            displayTimer = displayForSecs;
+            _animator.SetBool("Attacking", true);
+            _animator.Play("Enemy_AttackHitboxGrow");
+            _displayTimer = displayForSecs;
 
-            cooldown = reloadTime;
+            _cooldown = reloadTime;
 
             HealthBar healthBar = target.GetComponent<HealthBar>();
 

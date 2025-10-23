@@ -6,20 +6,20 @@ public class HealthBar : MonoBehaviour
     // This is only used for ratios.
     public float maxHealth = 100f;
     
-    private Slider health;
+    private Slider _health;
     
     void Start()
     {
-        health = GetComponentInChildren<Slider>();
+        _health = GetComponentInChildren<Slider>();
     }
 
     public void UpdateHealth(float amount)
     {
-        health.value = amount / maxHealth;
+        _health.value = amount / maxHealth;
     }
 
     public void TakeDamage(float damage)
     {
-        health.value -= damage / maxHealth;
+        _health.value -= damage / maxHealth;
     }
 }

@@ -218,6 +218,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4619342519120968853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3863906677487684652}
+  m_Layer: 0
+  m_Name: GunTip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3863906677487684652
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4619342519120968853}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7967132528498754589}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5151915759824959621
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +531,8 @@ Transform:
   m_LocalPosition: {x: 0.6, y: 0, z: 0.4}
   m_LocalScale: {x: 0.2, y: 0.4, z: 0.5}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3863906677487684652}
   m_Father: {fileID: 8085255626281116139}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2205541013752237107
@@ -593,6 +625,7 @@ GameObject:
   - component: {fileID: 7732368799306117165}
   - component: {fileID: 4015103214537146074}
   - component: {fileID: 6589556850849921361}
+  - component: {fileID: 4593336329118535622}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -632,6 +665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playing: 0
+  body: {fileID: 0}
   cam: {fileID: 5930920754183647963}
 --- !u!114 &7732368799306117165
 MonoBehaviour:
@@ -645,6 +679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ea042c8315864409cd33485f0fbb02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSpecialAbility
+  body: {fileID: 0}
   staminaBar: {fileID: 5504374932173295813}
   ability: 0
 --- !u!114 &4015103214537146074
@@ -685,6 +720,23 @@ CharacterController:
   m_SkinWidth: 0.01
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4593336329118535622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8159176334197343855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aebc7d5b4959e5f48aeb48bc312c813a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+  bulletSpeed: 20
+  reloadTime: 1
+  damage: 5
+  bulletSpawn: {fileID: 3863906677487684652}
+  bulletPrefab: {fileID: 5029739902340839995, guid: 27985268e05e60d45afc31ffb586b00a, type: 3}
 --- !u!1001 &1477198376187364274
 PrefabInstance:
   m_ObjectHideFlags: 0

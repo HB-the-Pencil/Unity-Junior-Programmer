@@ -1,16 +1,15 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
     public bool playing;
+    public PlayerActions Controls;
+    public CharacterController body;
     
     [SerializeField] GameObject cam;
     
-    public PlayerActions Controls;
-    public CharacterController body;
-    private PlayerSpecialAbility specialHandler;
-    // private PlayerAttack attackHandler; // not yet implemented
+    private PlayerSpecialAbility _specialHandler;
+    private PlayerAttack _attackHandler;
 
     private float _camInput;
     private Vector2 _moveInput;
@@ -24,8 +23,8 @@ public class PlayerController : MonoBehaviour
         body = GetComponent<CharacterController>();
         
         // Find the Special and Attack controller scripts so they can talk back and forth.
-        specialHandler = GetComponent<PlayerSpecialAbility>();
-        // attackHandler = GetComponent<PlayerAttack>(); // not yet implemented
+        _specialHandler = GetComponent<PlayerSpecialAbility>();
+        _attackHandler = GetComponent<PlayerAttack>();
         
         // Get the controls.
         Controls = new PlayerActions();
@@ -56,10 +55,9 @@ public class PlayerController : MonoBehaviour
         // Move the player.
         DoMove();
         
-        // Attack abilities. (no enemies yet, so no attacks)
-        DoAttack();
-        
-        specialHandler.DoSpecial();
+        // Attack and special abilities.
+        _attackHandler.DoAttack();
+        _specialHandler.DoSpecial();
 
         if (Controls.UI.Pause.triggered)
         {
@@ -92,14 +90,5 @@ public class PlayerController : MonoBehaviour
         movement = movement.normalized * (_moveSpeed * Time.deltaTime);
             
         body.Move(movement);
-    }
-    
-    private void DoAttack()
-    {
-        if (Controls.Abilities.Attack.triggered)
-        {
-            // do attacky things here
-            Debug.Log("bop");
-        }
     }
 }
