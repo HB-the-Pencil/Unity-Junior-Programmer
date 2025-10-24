@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 233090120744284334}
   - component: {fileID: 966735938209025782}
   - component: {fileID: 7391526201117617474}
+  - component: {fileID: 6075567600820985392}
   m_Layer: 0
   m_Name: Crystal
   m_TagString: Crystal
@@ -156,6 +157,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthBar
   maxHealth: 100
+  currentHealth: 0
+  invulnerabilityTime: 1
+--- !u!114 &6075567600820985392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596728465603828251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c60cb2f69029dd4e870385ef49728da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CrystalManager
 --- !u!1001 &1616516955856362776
 PrefabInstance:
   m_ObjectHideFlags: 0

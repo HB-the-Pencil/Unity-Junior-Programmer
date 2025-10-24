@@ -2,11 +2,16 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    // Thanks to a tutorial by Bobsi Tutorials.
-    [SerializeField] float bulletSpeed;
-    [SerializeField] float reloadTime;
-    [SerializeField] float damage;
+    [Header("Bullet Settings")]
+    public float damage;
+    public float knockback;
     
+    [Header("Speed Settings")]
+    // Thanks to a tutorial by Bobsi Tutorials.
+    public float reloadTime;
+    [SerializeField] float bulletSpeed;
+    
+    [Header("Bullet Spawning Setup")]
     [SerializeField] Transform bulletSpawn;
     [SerializeField] GameObject bulletPrefab;
     
@@ -18,6 +23,11 @@ public class PlayerAttack : MonoBehaviour
     {
         // Find the player so the scripts can interact.
         _player = GetComponent<PlayerController>();
+        
+        // Change the bullet settings.
+        BulletCollision bullet = bulletPrefab.GetComponent<BulletCollision>();
+        bullet.damage = damage;
+        bullet.knockback = knockback;
     }
     
     public void DoAttack()

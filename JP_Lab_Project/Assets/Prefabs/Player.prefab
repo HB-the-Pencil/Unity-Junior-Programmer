@@ -243,7 +243,7 @@ Transform:
   m_GameObject: {fileID: 4619342519120968853}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -317,7 +317,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: eb597d7646366a944816d42ab778a6a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -568,7 +568,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: eb597d7646366a944816d42ab778a6a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -621,10 +621,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 430331047557995258}
+  - component: {fileID: 6589556850849921361}
   - component: {fileID: 7001578379359752196}
   - component: {fileID: 7732368799306117165}
   - component: {fileID: 4015103214537146074}
-  - component: {fileID: 6589556850849921361}
   - component: {fileID: 4593336329118535622}
   m_Layer: 0
   m_Name: Player
@@ -652,6 +652,31 @@ Transform:
   - {fileID: 8085255626281116139}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!143 &6589556850849921361
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8159176334197343855}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.01
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7001578379359752196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -695,31 +720,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthBar
   maxHealth: 100
---- !u!143 &6589556850849921361
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8159176334197343855}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 1
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.01
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  currentHealth: 0
+  invulnerable: 0
+  invulnerabilityTime: 1
 --- !u!114 &4593336329118535622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -732,9 +735,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aebc7d5b4959e5f48aeb48bc312c813a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
-  bulletSpeed: 20
+  damage: 0
+  knockback: 0
   reloadTime: 1
-  damage: 5
+  bulletSpeed: 20
   bulletSpawn: {fileID: 3863906677487684652}
   bulletPrefab: {fileID: 5029739902340839995, guid: 27985268e05e60d45afc31ffb586b00a, type: 3}
 --- !u!1001 &1477198376187364274

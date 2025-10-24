@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     
     private PlayerSpecialAbility _specialHandler;
     private PlayerAttack _attackHandler;
+    
+    private HealthBar _healthBar;
+    private Animator _animator;
 
     private float _camInput;
     private Vector2 _moveInput;
@@ -25,6 +28,9 @@ public class PlayerController : MonoBehaviour
         // Find the Special and Attack controller scripts so they can talk back and forth.
         _specialHandler = GetComponent<PlayerSpecialAbility>();
         _attackHandler = GetComponent<PlayerAttack>();
+        
+        _healthBar = GetComponent<HealthBar>();
+        _animator = GetComponent<Animator>();
         
         // Get the controls.
         Controls = new PlayerActions();
@@ -59,9 +65,16 @@ public class PlayerController : MonoBehaviour
         _attackHandler.DoAttack();
         _specialHandler.DoSpecial();
 
+        // _animator.SetBool("Invulnerable", _healthBar.invulnerable);
+
         if (Controls.UI.Pause.triggered)
         {
             Pause();
+        }
+
+        if (_healthBar.currentHealth <= 0)
+        {
+            GameOver();
         }
     }
 
@@ -71,6 +84,7 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        Controls.Disable();
     }
 
     public void Unpause()
@@ -79,6 +93,14 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        Controls.Enable();
+    }
+
+    public void GameOver()
+    {
+        // this will be fancier later
+        Pause();
+        print("Game Over");
     }
 
     private void DoMove()

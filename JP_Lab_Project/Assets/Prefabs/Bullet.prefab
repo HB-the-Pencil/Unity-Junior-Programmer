@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5699502958732912029}
   - component: {fileID: 1785372890491655182}
   - component: {fileID: 5427359647894844130}
+  - component: {fileID: 1567710733089473501}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -106,7 +107,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -139,3 +140,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1567710733089473501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5029739902340839995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4afe30693244dbd4eaae4c6fe52b2852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletCollision
+  damage: 10
+  knockback: 10
