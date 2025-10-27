@@ -6,13 +6,11 @@ public class PlayerController : MonoBehaviour
     public PlayerActions Controls;
     public CharacterController body;
     
-    [SerializeField] GameObject cam;
-    
     private PlayerSpecialAbility _specialHandler;
     private PlayerAttack _attackHandler;
     
     private HealthBar _healthBar;
-    private Animator _animator;
+    // private Animator _animator;
 
     private float _camInput;
     private Vector2 _moveInput;
@@ -20,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private readonly float _camSpeed = 30f;
     private readonly float _moveSpeed = 10f;
 
-    private void Awake()
+    private void Start()
     {
         // Get the player's controller.
         body = GetComponent<CharacterController>();
@@ -30,12 +28,15 @@ public class PlayerController : MonoBehaviour
         _attackHandler = GetComponent<PlayerAttack>();
         
         _healthBar = GetComponent<HealthBar>();
-        _animator = GetComponent<Animator>();
+        // _animator = GetComponent<Animator>();
         
         // Get the controls.
         Controls = new PlayerActions();
+        
+        // Lock the cursor and begin.
+        Unpause();
     }
-
+    
     private void OnEnable()
     {
         Controls.Enable();
@@ -44,12 +45,6 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         Controls.Disable();
-    }
-
-    private void Start()
-    {
-        // Lock the cursor and begin.
-        Unpause();
     }
 
     private void Update()

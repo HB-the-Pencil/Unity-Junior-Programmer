@@ -1,16 +1,15 @@
 using UnityEngine;
 
+// TODO: idk what is wrong but something is not working here
+
 public class PlayerSpecialAbility : MonoBehaviour
 {
-    public CharacterController body;
-    
     enum Abilities
     {
         Dash,
     }
     
-    [SerializeField] StaminaBar staminaBar;
-    [SerializeField] private Abilities ability = Abilities.Dash;
+    [SerializeField] Abilities ability = Abilities.Dash;
     
     // DASH ABILITY
     // Speed: the rate at which character dashes forward
@@ -25,12 +24,15 @@ public class PlayerSpecialAbility : MonoBehaviour
     private bool _specialActive;
     
     private PlayerController _player;
+    private StaminaBar _staminaBar;
+    private CharacterController _body;
 
     void Start()
     {
         // Find the main controller script so they can talk back and forth.
         _player = GetComponent<PlayerController>();
-        body = _player.body;
+        _staminaBar = GetComponent<StaminaBar>();
+        _body = _player.body;
     }
 
     // Update is called once per frame
@@ -44,7 +46,7 @@ public class PlayerSpecialAbility : MonoBehaviour
             switch (ability)
             {
                 case Abilities.Dash:
-                    staminaBar.UpdateStamina(_cooldown, _dashCooldown);
+                    _staminaBar.UpdateStamina(_cooldown, _dashCooldown);
                     break;
                 
                 default:
@@ -54,7 +56,7 @@ public class PlayerSpecialAbility : MonoBehaviour
             if (_cooldown <= 0)
             {
                 // Hide the stamina bar.
-                staminaBar.transform.gameObject.SetActive(false);
+                _staminaBar.transform.gameObject.SetActive(false);
 
                 if (_player.Controls.Abilities.Special.triggered)
                 {
@@ -73,7 +75,7 @@ public class PlayerSpecialAbility : MonoBehaviour
                     if (_cooldown < _dashDuration)
                     {
                         // Dash forward.
-                        body.Move(transform.forward * (_dashSpeed * Time.deltaTime));
+                        _body.Move(transform.forward * (_dashSpeed * Time.deltaTime));
                         _cooldown += Time.deltaTime;
                     }
                     else
@@ -82,7 +84,7 @@ public class PlayerSpecialAbility : MonoBehaviour
                         _cooldown = _dashCooldown;
 
                         // Make the stamina bar appear.
-                        staminaBar.transform.gameObject.SetActive(true);
+                        _staminaBar.transform.gameObject.SetActive(true);
                     }
                     break;
                 

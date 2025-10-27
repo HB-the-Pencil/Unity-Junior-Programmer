@@ -284,8 +284,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4a23b6ae465044f8725d4259f072ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthBar
+  healthSlider: {fileID: 6473273702473181109}
   maxHealth: 100
   currentHealth: 0
+  invulnerable: 0
   invulnerabilityTime: 1
 --- !u!95 &7600634779121580371
 Animator:
@@ -431,3 +433,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3296550134715799585, guid: 7a9624731ed25dc47a272e284ad0d329, type: 3}
   m_PrefabInstance: {fileID: 1921134640162154712}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6473273702473181109 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4862917709678677869, guid: 7a9624731ed25dc47a272e284ad0d329, type: 3}
+  m_PrefabInstance: {fileID: 1921134640162154712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider

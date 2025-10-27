@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6137545658701260425}
   - component: {fileID: 7893698015840625765}
-  - component: {fileID: 7275205703990599283}
   m_Layer: 5
-  m_Name: Dash
+  m_Name: Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,19 +89,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7275205703990599283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1390104013383579873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9304d3ba8b2ec84785241f70ce17954, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 7893698015840625765}
 --- !u!1 &4510267003320178195
 GameObject:
   m_ObjectHideFlags: 0
