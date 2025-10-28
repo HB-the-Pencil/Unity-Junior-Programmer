@@ -11,7 +11,7 @@ public class BulletCollision : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Bug":
-                HealthBar healthBar = other.gameObject.GetComponent<HealthBar>();
+                HealthBar healthBar = other.gameObject.GetComponentInChildren<HealthBar>();
                 healthBar.TakeDamage(damage);
                 
                 Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
