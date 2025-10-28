@@ -1,7 +1,5 @@
 using UnityEngine;
 
-// TODO: idk what is wrong but something is not working here
-
 public class PlayerSpecialAbility : MonoBehaviour
 {
     enum Abilities
@@ -31,7 +29,7 @@ public class PlayerSpecialAbility : MonoBehaviour
     {
         // Find the main controller script so they can talk back and forth.
         _player = GetComponent<PlayerController>();
-        _staminaBar = GetComponent<StaminaBar>();
+        _staminaBar = GetComponentInChildren<StaminaBar>();
         _body = _player.body;
     }
 

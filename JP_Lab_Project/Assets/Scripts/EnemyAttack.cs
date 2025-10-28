@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class EnemyAttack : MonoBehaviour
 {
@@ -60,8 +61,8 @@ public class EnemyAttack : MonoBehaviour
             _displayTimer = displayForSecs;
 
             _cooldown = reloadTime;
-
-            HealthBar healthBar = target.GetComponent<HealthBar>();
+            
+            HealthBar healthBar = target.GetComponentInChildren<HealthBar>();
 
             healthBar.TakeDamage(damage);
         }

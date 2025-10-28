@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     [Header("Health Bar Settings")]
-    [SerializeField] Slider healthSlider;
     // This is only used for ratios.
     public float maxHealth = 100f;
     public float currentHealth;
@@ -14,6 +13,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField] float invulnerabilityTime = 1f;
 
     private float _cooldown;
+    private Slider _healthSlider;
 
     public HealthBar(bool invulnerable)
     {
@@ -22,6 +22,7 @@ public class HealthBar : MonoBehaviour
 
     void Start()
     {
+        _healthSlider = GetComponentInChildren<Slider>();
         currentHealth = maxHealth;
     }
 
@@ -32,19 +33,19 @@ public class HealthBar : MonoBehaviour
         invulnerable = _cooldown > 0;
         
         // Update the current health.
-        currentHealth = healthSlider.value;
+        currentHealth = _healthSlider.value;
     }
 
     public void UpdateHealth(float amount)
     {
-        healthSlider.value = amount / maxHealth;
+        _healthSlider.value = amount / maxHealth;
     }
 
     public void TakeDamage(float damage)
     {
         if (_cooldown <= 0)
         {
-            healthSlider.value -= damage / maxHealth;
+            _healthSlider.value -= damage / maxHealth;
             _cooldown = invulnerabilityTime;
         }
     }

@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private PlayerSpecialAbility _specialHandler;
     private PlayerAttack _attackHandler;
     
-    private HealthBar _healthBar;
+    public HealthBar healthBar;
     // private Animator _animator;
 
     private float _camInput;
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
         _specialHandler = GetComponent<PlayerSpecialAbility>();
         _attackHandler = GetComponent<PlayerAttack>();
         
-        _healthBar = GetComponent<HealthBar>();
+        healthBar = GetComponentInChildren<HealthBar>();
         // _animator = GetComponent<Animator>();
         
         // Get the controls.
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
             Pause();
         }
 
-        if (_healthBar.currentHealth <= 0)
+        if (healthBar.currentHealth <= 0)
         {
             GameOver();
         }

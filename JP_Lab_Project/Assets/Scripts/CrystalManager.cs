@@ -7,7 +7,7 @@ public class CrystalManager : MonoBehaviour
 
     void Start()
     {
-        _healthBar = GetComponent<HealthBar>();
+        _healthBar = GetComponentInChildren<HealthBar>();
         _player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
 

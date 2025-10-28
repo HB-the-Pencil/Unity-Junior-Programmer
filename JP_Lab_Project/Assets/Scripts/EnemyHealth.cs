@@ -6,7 +6,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Start()
     {
-        _healthBar = GetComponent<HealthBar>();
+        _healthBar = GetComponentInChildren<HealthBar>();
     }
 
     void Update()

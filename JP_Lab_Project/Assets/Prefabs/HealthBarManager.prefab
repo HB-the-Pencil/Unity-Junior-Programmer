@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 4641054751228678088}
   - component: {fileID: 2662901626557533110}
   - component: {fileID: 8875917000350177638}
+  - component: {fileID: 5879329543043854287}
   m_Layer: 5
   m_Name: HealthBarManager
   m_TagString: Untagged
@@ -285,7 +286,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &2662901626557533110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,6 +316,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c71f2fd0ed70f4289bbb4ebf424506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CanvasOrientation
+--- !u!114 &5879329543043854287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6088817889257073702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc4a23b6ae465044f8725d4259f072ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthBar
+  maxHealth: 100
+  currentHealth: 0
+  invulnerable: 0
+  invulnerabilityTime: 1
 --- !u!1 &6626705220486514383
 GameObject:
   m_ObjectHideFlags: 0
