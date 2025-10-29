@@ -14,6 +14,7 @@ public class EnemyHealth : MonoBehaviour
         if (_healthBar.currentHealth <= 0)
         {
             Destroy(gameObject);
+            GameObject.FindWithTag("SpawnManager").GetComponent<SpawnManager>().enemyCount--;
         }
     }
 }
