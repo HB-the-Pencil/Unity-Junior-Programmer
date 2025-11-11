@@ -11,18 +11,11 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
     public Button restartButton;
+    public RectTransform titlePanel;
     public bool isGameOver;
 
     private float _spawnRate = 1;
     private int _score;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        StartCoroutine(SpawnTarget());
-        UpdateScore(0);
-        isGameOver = false;
-    }
 
     private IEnumerator SpawnTarget()
     {
@@ -37,7 +30,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void StartGame(int difficulty)
+    {
+        _spawnRate /= difficulty;
+        titlePanel.gameObject.SetActive(false);
+        StartCoroutine(SpawnTarget());
+        _score = 0;
+        UpdateScore(0);
+        isGameOver = false;
     }
 
     public void UpdateScore(int scoreChange)
