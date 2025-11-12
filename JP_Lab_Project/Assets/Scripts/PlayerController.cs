@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private readonly float _camSpeed = 30f;
     private readonly float _moveSpeed = 10f;
 
-    private void Start()
+    private void Awake()
     {
         // Get the player's controller.
         body = GetComponent<CharacterController>();
