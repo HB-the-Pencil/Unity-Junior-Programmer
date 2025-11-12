@@ -33,7 +33,7 @@ public class Target : MonoBehaviour
         
     }
 
-    void OnMouseDown()
+    void OnMouseEnter()
     {
         if (!_gameManager.isGameOver)
         {
