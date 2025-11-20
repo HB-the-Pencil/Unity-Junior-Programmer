@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI gameOverText;
     public Button restartButton;
     public RectTransform titlePanel;
+    public ParticleSystem mouseParticles;
     public bool isGameOver;
 
     private float _spawnRate = 1;
@@ -30,7 +31,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        mouseParticles.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
+        if (!isGameOver && Input.GetMouseButton(0))
+        {
+            mouseParticles.gameObject.SetActive(true);
+        }
+        else
+        {
+            mouseParticles.gameObject.SetActive(false);
+        }
     }
 
     public void StartGame(int difficulty)

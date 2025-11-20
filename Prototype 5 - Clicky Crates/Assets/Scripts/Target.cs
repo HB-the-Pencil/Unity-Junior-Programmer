@@ -33,9 +33,9 @@ public class Target : MonoBehaviour
         
     }
 
-    void OnMouseDrag()
+    void OnMouseEnter()
     {
-        if (!_gameManager.isGameOver)
+        if (!_gameManager.isGameOver && Input.GetMouseButton(0))
         {
             _gameManager.UpdateScore(points);
             Instantiate(explosionParticles, transform.position, explosionParticles.transform.rotation);
