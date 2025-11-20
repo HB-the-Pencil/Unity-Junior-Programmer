@@ -257,6 +257,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 57694246}
   m_CullTransparentMesh: 1
+--- !u!4 &111348163 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6746143380799691653, guid: 743ce290c74ae49c19aa3f128322fc7e, type: 3}
+  m_PrefabInstance: {fileID: 850789724}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &111348166 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 15085447402717889, guid: 743ce290c74ae49c19aa3f128322fc7e, type: 3}
+  m_PrefabInstance: {fileID: 850789724}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,6 +1348,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 796515552}
   m_CullTransparentMesh: 1
+--- !u!1001 &850789724
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1486417690}
+    m_Modifications:
+    - target: {fileID: 15085447402717889, guid: 743ce290c74ae49c19aa3f128322fc7e, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 15085447402717889, guid: 743ce290c74ae49c19aa3f128322fc7e, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603594204106460700, guid: 743ce290c74ae49c19aa3f128322fc7e, type: 3}
+      propertyPath: m_Name
+      value: MouseTrail
+      objectReference: {fileID: 0}
+    - target: {fileID: 6746143380799691653, guid: 743ce290c74ae49c19aa3f128322fc7e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.117229
+      objectReference: {fileID: 0}
+    - target: {fileID: 6746143380799691653, guid: 743ce290c74ae49c19aa3f128322fc7e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -11.23813
+      objectReference: {fileID: 0}
+    - target: {fileID: 6746143380799691653, guid: 743ce290c74ae49c19aa3f128322fc7e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6746143380799691653, guid: 743ce290c74ae49c19aa3f128322fc7e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6746143380799691653, guid: 743ce290c74ae49c19aa3f128322fc7e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6746143380799691653, guid: 743ce290c74ae49c19aa3f128322fc7e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6746143380799691653, guid: 743ce290c74ae49c19aa3f128322fc7e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6746143380799691653, guid: 743ce290c74ae49c19aa3f128322fc7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6746143380799691653, guid: 743ce290c74ae49c19aa3f128322fc7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6746143380799691653, guid: 743ce290c74ae49c19aa3f128322fc7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 743ce290c74ae49c19aa3f128322fc7e, type: 3}
 --- !u!1 &1043111703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1874,7 +1949,8 @@ Transform:
   m_LocalPosition: {x: 3.32871, y: 8.32996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 111348163}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1486417691
@@ -1898,6 +1974,7 @@ MonoBehaviour:
   gameOverText: {fileID: 57694248}
   restartButton: {fileID: 1069092965}
   titlePanel: {fileID: 796515553}
+  mouseParticles: {fileID: 111348166}
   isGameOver: 0
 --- !u!1 &1497654161
 GameObject:
